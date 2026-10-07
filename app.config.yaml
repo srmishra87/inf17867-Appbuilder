@@ -1,0 +1,70 @@
+application:
+  actions: actions
+  web: web-src
+
+  runtimeManifest:
+    packages:
+      New folder:
+        license: Apache-2.0
+
+        actions:
+
+          generic:
+            function: actions/generic/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: true
+              final: true
+
+          signup:
+            function: actions/signup/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: false
+              final: true
+
+          login:
+            function: actions/login/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: false
+              final: true
+
+          validateToken:
+            function: actions/validateToken/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: false
+              final: true
+
+          ingestProducts:
+            function: actions/ingestProducts/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            annotations:
+              require-adobe-auth: false
+              include-ims-credentials: true
+              final: true
+          getProducts:
+            function: actions/getProducts/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            annotations:
+              require-adobe-auth: false
+              include-ims-credentials: true
+              final: true
+    database:
+      auto-provision: false
+      region: apac
